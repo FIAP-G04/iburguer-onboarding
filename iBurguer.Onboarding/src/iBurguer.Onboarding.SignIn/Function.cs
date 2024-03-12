@@ -25,7 +25,7 @@ public class Function
         _serviceProvider = serviceCollection.BuildServiceProvider();
     }
     
-    public async Task<APIGatewayProxyResponse> FunctionHandler(string request, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> FunctionHandler(SignInRequestGateway request, ILambdaContext context)
     {
         
         
@@ -35,7 +35,7 @@ public class Function
 
             try
             {
-                var response = await useCase.SignIn(request);
+                var response = await useCase.SignIn(request.Body);
                 
                 return new APIGatewayProxyResponse 
                 {

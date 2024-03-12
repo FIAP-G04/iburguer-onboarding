@@ -1,4 +1,6 @@
 using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using iBurguer.Onboarding.Application.SignUp;
@@ -23,8 +25,10 @@ public class Function
         _serviceProvider = serviceCollection.BuildServiceProvider();
     }
     
-    public async Task<APIGatewayProxyResponse> FunctionHandler(SignUpRequest request, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> FunctionHandler(SignUpRequestGateway gatewayRequest, ILambdaContext context)
     {
+        var request = JsonSerializer.Deserialize<SignUpRequest>(gatewayRequest.Body);
+
         using (var scope = _serviceProvider.CreateScope())
         {
             var useCase = scope.ServiceProvider.GetRequiredService<ISignUpUseCase>();

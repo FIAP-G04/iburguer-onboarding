@@ -11,8 +11,8 @@ namespace iBurguer.Onboarding.Infrastructure;
 
 public class CognitoGateway : IIdentityGateway
 {
-    private const string ClientId = "CLIENT_ID";
-    private const string UserPoolId = "USER_POOL_ID";
+    private readonly string ClientId;
+    private readonly string UserPoolId;
     
     private readonly IAmazonCognitoIdentityProvider _cognitoService;
     
@@ -21,6 +21,9 @@ public class CognitoGateway : IIdentityGateway
         ArgumentNullException.ThrowIfNull(cognitoService);
         
         _cognitoService = cognitoService;
+
+        ClientId = Environment.GetEnvironmentVariable("CLIENT_ID")!;
+        UserPoolId = Environment.GetEnvironmentVariable("USER_POOL_ID")!;
     }
     
     public async Task<bool> SignUpAsync(Customer customer)
@@ -67,6 +70,7 @@ public class CognitoGateway : IIdentityGateway
 
     public async Task<SignInResponse?> SignInAsync(CPF cpf)
     {
+        Console.WriteLine($"Client: {ClientId} - Pool: {UserPoolId}");
         var parameters = new Dictionary<string, string>();
         
         parameters.Add("USERNAME", cpf);
