@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
     
 jobs:
-  ci-signIn.Tests:
+  ci-signIn-Tests:
     runs-on: ubuntu-latest
     environment: 
       name: Iburguer
@@ -19,11 +19,31 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.x'
+        dotnet-version: '8.x'
 
     - name: Install Amazon.Lambda.Tools
       run: dotnet tool install -g Amazon.Lambda.Tools
     
     - name: Run Tests
-      run: dotnet test iBurguer.Onboarding.SignIn/test/iBurguer.Onboarding.SignIn.Tests
+      run: dotnet test ../iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn/test/iBurguer.Onboarding.SignIn.Tests
+  
+  ci-signUp-Tests:
+    runs-on: ubuntu-latest
+    environment: 
+      name: Iburguer
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Install Amazon.Lambda.Tools
+      run: dotnet tool install -g Amazon.Lambda.Tools
+    
+    - name: Run Tests
+      run: dotnet test ../iBurguer.Onboarding/src/iBurguer.Onboarding.SignUp/test/iBurguer.Onboarding.SignUp.Tests
   
