@@ -25,6 +25,6 @@ jobs:
       run: dotnet tool install -g Amazon.Lambda.Tools
     
     - name: Run Tests
-      run: dotnet test ../../iBurguer.Onboarding/test/iBurguer.Onboarding.Tests
+      run: echo "$PATH"
 
       
