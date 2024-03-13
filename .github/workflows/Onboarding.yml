@@ -26,12 +26,49 @@ jobs:
 
     - name: Build Application
       run: dotnet build  iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn --no-restore --configuration Release
-
-    - name: Install Amazon.Lambda.Tools
-      run: dotnet tool install -g Amazon.Lambda.Tools
     
     - name: Run Tests
       run: dotnet test iBurguer.Onboarding/test/iBurguer.Onboarding.Tests
       
+  OnBoarding-SingIn-Deploy:
+    needs: OnBoarding-Tests
+    runs-on: ubuntu-latest
+    environment: 
+      name: Iburguer
 
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Install Amazon.Lambda.Tools
+      run: dotnet tool install -g Amazon.Lambda.Tools
+    
+    - name: Deploy function to AWS Lambda
+      run: dotnet lambda deploy-function  iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn
+
+  OnBoarding-SignUp-Deploy:
+    needs: OnBoarding-Tests
+    runs-on: ubuntu-latest
+    environment: 
+      name: Iburguer
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Install Amazon.Lambda.Tools
+      run: dotnet tool install -g Amazon.Lambda.Tools
+    
+    - name: Deploy function to AWS Lambda
+      run: dotnet lambda deploy-function  iBurguer.Onboarding/src/iBurguer.Onboarding.SignUp
       
