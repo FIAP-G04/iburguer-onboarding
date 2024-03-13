@@ -21,6 +21,12 @@ jobs:
       with:
         dotnet-version: '8.x'
 
+    - name: Restore Dependencies
+      run: dotnet restore iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn
+
+    - name: Build Application
+      run: dotnet build  iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn --no-restore --configuration Release
+
     - name: Install Amazon.Lambda.Tools
       run: dotnet tool install -g Amazon.Lambda.Tools
     
