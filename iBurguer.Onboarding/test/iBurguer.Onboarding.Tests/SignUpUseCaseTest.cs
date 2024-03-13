@@ -54,7 +54,7 @@ public class SignUpUseCaseTest
     public async Task ShouldThrowErrorWhenCpfNotProvidedOrInvalid(string cpf)
     {
         //Arrange
-        _signUpRequest = _signUpRequest with { Cpf = cpf };
+        _signUpRequest.Cpf = cpf;
 
         //Act
         var action = async () => await _sut.SignUp(_signUpRequest);
@@ -71,7 +71,7 @@ public class SignUpUseCaseTest
     public async Task ShouldThrowErrorWhenEmailNotProvided(string email)
     {
         //Arrange
-        _signUpRequest = _signUpRequest with { Email = email };
+        _signUpRequest.Email = email;
 
         //Act
         var action = async () => await _sut.SignUp(_signUpRequest);

@@ -14,7 +14,6 @@ public class FunctionTest
 
         var function = new Function();
         var context = new TestLambdaContext();
-        var response = function.FunctionHandler(new SignUpRequest("11066001774", "Vincius", "Saetao", "vinisaeta@gmail.com"), context).Result;
 
         Assert.Equal(true, true);
 

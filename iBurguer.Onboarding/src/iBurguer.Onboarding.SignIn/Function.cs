@@ -27,8 +27,6 @@ public class Function
     
     public async Task<APIGatewayProxyResponse> FunctionHandler(SignInRequestGateway request, ILambdaContext context)
     {
-        
-        
         using (var scope = _serviceProvider.CreateScope())
         {
             var useCase = scope.ServiceProvider.GetRequiredService<ISignInUseCase>();
