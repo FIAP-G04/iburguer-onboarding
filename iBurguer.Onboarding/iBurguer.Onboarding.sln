@@ -1,20 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBurguer.Onboarding.SignIn", "src\iBurguer.Onboarding.SignIn\iBurguer.Onboarding.SignIn.csproj", "{A5B493D1-7195-4235-8E47-B351700D9599}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34707.107
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBurguer.Onboarding.SignIn", "src\iBurguer.Onboarding.SignIn\iBurguer.Onboarding.SignIn.csproj", "{A5B493D1-7195-4235-8E47-B351700D9599}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBurguer.Onboarding.SignUp", "src\iBurguer.Onboarding.SignUp\iBurguer.Onboarding.SignUp.csproj", "{3F0F1945-C9EA-445F-8CB5-706A4A1BA6EF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBurguer.Onboarding.SignIn.Tests", "test\iBurguer.Onboarding.SignIn.Tests\iBurguer.Onboarding.SignIn.Tests.csproj", "{6364CAF0-C254-42C4-9C42-1D5F059FEE50}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBurguer.Onboarding.SignUp.Tests", "test\iBurguer.Onboarding.SignUp.Tests\iBurguer.Onboarding.SignUp.Tests.csproj", "{C8CABC27-3399-4576-B558-F8891371DF3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBurguer.Onboarding.SignUp", "src\iBurguer.Onboarding.SignUp\iBurguer.Onboarding.SignUp.csproj", "{3F0F1945-C9EA-445F-8CB5-706A4A1BA6EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{62C6D10A-B655-43D8-BAB7-ADC41451B042}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{753CF172-2499-4294-9C62-B90FF863DA3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBurguer.Onboarding", "src\iBurguer.Onboarding\iBurguer.Onboarding.csproj", "{D96AD6B0-09D8-41FD-985D-C2BEDEE7E15C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBurguer.Onboarding", "src\iBurguer.Onboarding\iBurguer.Onboarding.csproj", "{D96AD6B0-09D8-41FD-985D-C2BEDEE7E15C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBurguer.Onboarding.Tests", "test\iBurguer.Onboarding.Tests\iBurguer.Onboarding.Tests.csproj", "{30274797-0320-46A0-A529-E228D0BE6388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBurguer.Onboarding.Tests", "test\iBurguer.Onboarding.Tests\iBurguer.Onboarding.Tests.csproj", "{30274797-0320-46A0-A529-E228D0BE6388}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +29,6 @@ Global
 		{3F0F1945-C9EA-445F-8CB5-706A4A1BA6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F0F1945-C9EA-445F-8CB5-706A4A1BA6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F0F1945-C9EA-445F-8CB5-706A4A1BA6EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6364CAF0-C254-42C4-9C42-1D5F059FEE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6364CAF0-C254-42C4-9C42-1D5F059FEE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6364CAF0-C254-42C4-9C42-1D5F059FEE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6364CAF0-C254-42C4-9C42-1D5F059FEE50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8CABC27-3399-4576-B558-F8891371DF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8CABC27-3399-4576-B558-F8891371DF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8CABC27-3399-4576-B558-F8891371DF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8CABC27-3399-4576-B558-F8891371DF3E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D96AD6B0-09D8-41FD-985D-C2BEDEE7E15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D96AD6B0-09D8-41FD-985D-C2BEDEE7E15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96AD6B0-09D8-41FD-985D-C2BEDEE7E15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,11 +38,12 @@ Global
 		{30274797-0320-46A0-A529-E228D0BE6388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30274797-0320-46A0-A529-E228D0BE6388}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A5B493D1-7195-4235-8E47-B351700D9599} = {62C6D10A-B655-43D8-BAB7-ADC41451B042}
-		{6364CAF0-C254-42C4-9C42-1D5F059FEE50} = {753CF172-2499-4294-9C62-B90FF863DA3B}
 		{3F0F1945-C9EA-445F-8CB5-706A4A1BA6EF} = {62C6D10A-B655-43D8-BAB7-ADC41451B042}
-		{C8CABC27-3399-4576-B558-F8891371DF3E} = {753CF172-2499-4294-9C62-B90FF863DA3B}
 		{D96AD6B0-09D8-41FD-985D-C2BEDEE7E15C} = {62C6D10A-B655-43D8-BAB7-ADC41451B042}
 		{30274797-0320-46A0-A529-E228D0BE6388} = {753CF172-2499-4294-9C62-B90FF863DA3B}
 	EndGlobalSection
