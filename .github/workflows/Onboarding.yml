@@ -8,28 +8,51 @@ on:
     
 jobs:
   OnBoarding-Tests:
-    runs-on: ubuntu-latest
-    environment: 
-      name: Iburguer
-
+    runs-on: windows-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: install Coverlet
+        run: |
+          dotnet tool install --global coverlet.console
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v3
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        shell: powershell
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml"
+          dotnet build .\iBurguer.Onboarding\iBurguer.Onboarding.sln --no-incremental
+          coverlet .\iBurguer.Onboarding\test\iBurguer.Onboarding.Tests\bin\Debug\net8.0\iBurguer.Onboarding.Tests.dll --target "dotnet" --targetargs "test --no-build" --mergeoutput -f=opencover -o="coverage.xml"
+          coverlet .\iBurguer.Onboarding\test\iBurguer.Onboarding.SignIn.Tests\bin\Debug\net8.0\iBurguer.Onboarding.SignIn.Tests.dll --target "dotnet" --targetargs "test --no-build" --mergeoutput -f=opencover -o="coverage.xml"
+          coverlet .\iBurguer.Onboarding\test\iBurguer.Onboarding.SignUp.Tests\bin\Debug\net8.0\iBurguer.Onboarding.SignUp.Tests.dll --target "dotnet" --targetargs "test --no-build" --mergeoutput -f=opencover -o="coverage.xml"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.x'
-
-    - name: Restore Dependencies
-      run: dotnet restore iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn
-
-    - name: Build Application
-      run: dotnet build  iBurguer.Onboarding/src/iBurguer.Onboarding.SignIn --no-restore --configuration Release
-    
-    - name: Run Tests
-      run: dotnet test iBurguer.Onboarding/test/iBurguer.Onboarding.Tests
-      
   OnBoarding-SingIn-Deploy:
     needs: OnBoarding-Tests
     runs-on: ubuntu-latest
