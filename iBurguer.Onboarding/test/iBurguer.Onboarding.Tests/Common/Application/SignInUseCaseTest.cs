@@ -5,7 +5,7 @@ using iBurguer.Onboarding.Application.SignIn;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 
-namespace iBurguer.Onboarding.Tests;
+namespace iBurguer.Onboarding.Tests.Common.Application;
 
 public class SignInUseCaseTest
 {
@@ -21,7 +21,7 @@ public class SignInUseCaseTest
         _fixture = new Fixture();
         _cpf = "46793281771";
     }
-    
+
     [Fact]
     public void ShouldThrowErrorWhenIdentityGatewayNotProvided()
     {
@@ -37,7 +37,7 @@ public class SignInUseCaseTest
     {
         //Arrange
         var response = _fixture.Create<SignInResponse>();
-        _gateway.SignInAsync(_cpf).Returns(response); 
+        _gateway.SignInAsync(_cpf).Returns(response);
 
         //Act
         var result = await _sut.SignIn(_cpf);
@@ -54,7 +54,7 @@ public class SignInUseCaseTest
     public async Task ShouldThrowErrorWhenCustomerUnidentified()
     {
         //Arrange
-        _gateway.SignInAsync(_cpf).ReturnsNullForAnyArgs(); 
+        _gateway.SignInAsync(_cpf).ReturnsNullForAnyArgs();
 
         //Act
         var action = async () => await _sut.SignIn(_cpf);

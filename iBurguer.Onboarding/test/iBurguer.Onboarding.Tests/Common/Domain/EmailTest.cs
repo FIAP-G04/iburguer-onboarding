@@ -1,7 +1,7 @@
 using FluentAssertions;
 using iBurguer.Onboarding.Domain;
 
-namespace iBurguer.Onboarding.Tests;
+namespace iBurguer.Onboarding.Tests.Common.Domain;
 
 public class EmailTest
 {
