@@ -47,7 +47,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml"
-          dotnet build --no-incremental
+          dotnet build .\iBurguer.Onboarding\iBurguer.Onboarding.sln --no-incremental
           coverlet .\iBurguer.Onboarding\test\iBurguer.Onboarding.Tests\bin\Debug\net8.0\iBurguer.Onboarding.Tests.dll --target "dotnet" --targetargs "test --no-build" --mergeoutput -f=opencover -o="coverage.xml"
           coverlet .\iBurguer.Onboarding\test\iBurguer.Onboarding.SignIn.Tests\bin\Debug\net8.0\iBurguer.Onboarding.SignIn.Tests.dll --target "dotnet" --targetargs "test --no-build" --mergeoutput -f=opencover -o="coverage.xml"
           coverlet .\iBurguer.Onboarding\test\iBurguer.Onboarding.SignUp.Tests\bin\Debug\net8.0\iBurguer.Onboarding.SignUp.Tests.dll --target "dotnet" --targetargs "test --no-build" --mergeoutput -f=opencover -o="coverage.xml"
