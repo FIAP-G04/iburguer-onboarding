@@ -46,6 +46,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
+          ls
           cd iBurguer.Onboarding
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml,coverage1.xml,coverage2.xml"
           dotnet build --no-incremental
