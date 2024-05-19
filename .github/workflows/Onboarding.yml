@@ -32,12 +32,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml"
           cd iBurguer.Onboarding
+          .\..\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml"
           dotnet build --no-incremental
           coverlet .\test\iBurguer.Onboarding.Tests\bin\Debug\net8.0\iBurguer.Onboarding.Tests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
           cd ..
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          .\..\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
   OnBoarding-SingIn-Deploy:
     needs: OnBoarding-Tests
