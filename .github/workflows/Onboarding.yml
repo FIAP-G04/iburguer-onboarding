@@ -49,9 +49,11 @@ jobs:
           cd iBurguer.Onboarding
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml,coverage1.xml,coverage2.xml"
           dotnet build --no-incremental
+          ls
           coverlet .\test\iBurguer.Onboarding.Tests\bin\Debug\net8.0\iBurguer.Onboarding.Tests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
           coverlet .\test\iBurguer.Onboarding.SignIn.Tests\bin\Debug\net8.0\iBurguer.Onboarding.SignIn.Tests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage1.xml"
           coverlet .\test\iBurguer.Onboarding.SignUp.Tests\bin\Debug\net8.0\iBurguer.Onboarding.SignUp.Tests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage2.xml"
+          ls
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
   OnBoarding-SingIn-Deploy:
