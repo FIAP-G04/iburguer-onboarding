@@ -21,21 +21,7 @@ jobs:
       - name: install Coverlet
         run: |
           dotnet tool install --global coverlet.console
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~\sonar\cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v3
-        with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
@@ -46,9 +32,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          ls
-          cd iBurguer.Onboarding
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"FIAP-G04_iburguer-onboarding" /o:"fiap-g04" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml,coverage1.xml,coverage2.xml"
+          cd iBurguer.Onboarding
           dotnet build --no-incremental
           ls
           coverlet .\test\iBurguer.Onboarding.Tests\bin\Debug\net8.0\iBurguer.Onboarding.Tests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
