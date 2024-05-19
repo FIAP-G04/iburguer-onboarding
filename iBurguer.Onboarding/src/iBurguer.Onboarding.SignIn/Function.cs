@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text.Json;
 using Amazon.Lambda.APIGatewayEvents;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace iBurguer.Onboarding.SignIn;
 
+[ExcludeFromCodeCoverage]
 public class Function
 {
     private readonly ServiceProvider _serviceProvider;

@@ -5,7 +5,7 @@ using iBurguer.Onboarding.Application.SignUp;
 using iBurguer.Onboarding.Domain;
 using NSubstitute;
 
-namespace iBurguer.Onboarding.Tests;
+namespace iBurguer.Onboarding.Tests.Common.Application;
 
 public class SignUpUseCaseTest
 {
@@ -22,7 +22,7 @@ public class SignUpUseCaseTest
         _signUpRequest = _fixture.Build<SignUpRequest>().With(r => r.Cpf, "46793281771")
             .With(r => r.Email, "anne@johnson.com").Create();
     }
-    
+
     [Fact]
     public void ShouldThrowErrorWhenIdentityGatewayNotProvided()
     {
@@ -37,7 +37,7 @@ public class SignUpUseCaseTest
     public async Task ShouldSignUpCustomer()
     {
         //Arrange
-        _gateway.SignUpAsync(Arg.Any<Customer>()).Returns(true); 
+        _gateway.SignUpAsync(Arg.Any<Customer>()).Returns(true);
 
         //Act
         var result = await _sut.SignUp(_signUpRequest);
@@ -62,7 +62,7 @@ public class SignUpUseCaseTest
         //Assert
         await action.Should().ThrowAsync<DomainException>();
     }
-    
+
     [Theory]
     [InlineData("")]
     [InlineData("anne@john")]

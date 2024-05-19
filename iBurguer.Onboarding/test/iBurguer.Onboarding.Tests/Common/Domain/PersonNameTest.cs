@@ -1,7 +1,7 @@
 using FluentAssertions;
 using iBurguer.Onboarding.Domain;
 
-namespace iBurguer.Onboarding.Tests;
+namespace iBurguer.Onboarding.Tests.Common.Domain;
 
 public class PersonNameTest
 {
@@ -12,7 +12,7 @@ public class PersonNameTest
     public void ShouldValidPersonName(string firstName, string lastName, string fullName) =>
         //Act & Assert
         PersonName.From(firstName, lastName).ToString().Should().Be(fullName);
-    
+
     [Theory]
     [InlineData("Anna", "")]
     [InlineData("", "Lembke")]

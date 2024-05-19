@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace iBurguer.Onboarding.SignUp;
 
+[ExcludeFromCodeCoverage]
 public class Function
 {
     readonly ServiceProvider _serviceProvider;
