@@ -2,32 +2,73 @@
 
 <!-- Permite  a funcionalidade de voltar ao topo -->
 <a id="topo"></a>
+___________________________________________________
 
-<!-- Titulo do projeto -->
-<div align="center" style="margin-bottom:10px">
-    <img src=".github/images/logo.png" alt="logo" />
+<!-- Informações visuais do projeto -->
+<div align="center">
+    <img alt="Repository size" src="https://img.shields.io/github/repo-size/FIAP-G04/iburguer-onboarding?color=009bd9">
+    <a href="https://github.com/FIAP-G04/iburguer-onboarding/commits/main">
+        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/FIAP-G04/iburguer-onboarding?color=009bd9">
+    </a>
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-009db9">
+    <a href="https://github.com/FIAP-G04/iburguer-onboarding/stargazers">
+        <img alt="Stargazers" src="https://img.shields.io/github/stars/FIAP-G04/iburguer-onboarding?color=009db9&logo=github">
+    </a>
+    <img alt="Version" src="https://img.shields.io/badge/Version-8.0-3B19E5?logo=dotnet" />
 </div>
 
-## Objetivo
+<!-- Breve descrição sobre o projeto -->
+
+<div align="left">
+  <h4>O Iburguer é um sistema projetado para gerenciar os pedidos da lanchonete fictícia Byte Burguer, como parte do desafio tecnológico de Arquitetura de Software do curso de Pós-Graduação em Tecnologia da FIAP, Turma 4SOAT. Construído por <a href="https://github.com/CarlosEduAC">Carlos Cardoso</a>, <a href="https://github.com/LuanPCunha">Luan Cunha</a>, <a href="https://github.com/matheusantonio">Matheus Cardoso</a> e <a href="https://github.com/vinisaeta">Vinicius Saeta</a>. Para saber mais visite a<a href="https://github.com/FIAP-G04"> pagina do grupo</a>
+  </h4>
+</div>
+
+# Índice
+
+- [💡 Iburger-onboarding](#API)
+- [🔎 Coverage e Testes](#Teste)
+- [📕 Licença](#Licenca)
+
+<a id="API"></a>
+# 💡 Iburger-onboarding
+
 Esse repositório tem por objetivo armazenar o código fonte das **2 lambdas functions** do processo de identificação do usuário e registro de um novo cliente.
+<details>
+<summary>🎮 Tecnologias</summary>
 
-## Visão Geral da Arquitetura
+---
 
-<p align="center">
-  <img width="96%" src="https://github.com/FIAP-G04/.github/blob/main/images/diagrama-de-container.png" alt="Diagrama de Container">
-</p>
-
-## Tecnologias Utilizadas
-Esse projeto está utilizando as seguintes tecnologia:
+Esse projeto foi feito utilizando as seguintes tecnologias:
 
 - [C#](https://learn.microsoft.com/pt-br/dotnet/csharp/)
 - [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- [Amazon Cognito](https://aws.amazon.com/pt/pm/cognito/)
-- [AWS Lambda](https://aws.amazon.com/pt/pm/lambda/)
-- [Github Actions](https://github.com/features/actions)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [Kubernetes](https://kubernetes.io/pt-br/)
+- [Helm](https://helm.sh/)
+- [Minikube](https://minikube.sigs.k8s.io/docs/)
+- [Swagger](https://swagger.io/)
+- [K6](https://k6.io/)</details>
+
+<details>
+<summary>📦 Build & Tests</summary>
+
+---
+
+| CI/CD | Status |
+| --- | --- | 
+| Build & Unit Tests | [![.NET Build and Test](https://github.com/FIAP-G04/iburguer-onboarding/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/FIAP-G04/iburguer-onboarding/actions/workflows/quality-gate.yml)
+
+</details>
+
+<a id="Teste"></a>
+# 🔎 Coverage e Testes
+- [Sonar](https://sonarcloud.io/summary/overall?id=FIAP-G04_iburguer-onboarding)
+
 
 <a id="Licenca"></a>
-## Licença
+# 📕 Licença
 
 Lançado em 2023
 
