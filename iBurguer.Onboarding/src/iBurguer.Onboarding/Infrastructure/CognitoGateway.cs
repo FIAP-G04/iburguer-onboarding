@@ -110,4 +110,17 @@ public class CognitoGateway : IIdentityGateway
         
         return Convert.ToBase64String(hash);
     }
+
+    public async Task<bool> DisableUserAsync(CPF cpf)
+    {
+        var request = new AdminDeleteUserRequest()
+        {
+            Username = cpf,
+            UserPoolId = UserPoolId
+        };
+
+        var response = await _cognitoService.AdminDeleteUserAsync(request);
+
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
 }
