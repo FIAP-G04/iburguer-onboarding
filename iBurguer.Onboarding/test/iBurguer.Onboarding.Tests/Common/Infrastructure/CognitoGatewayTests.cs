@@ -107,5 +107,37 @@ namespace iBurguer.Onboarding.UnitTests.Infrastructure
             // Assert
             Assert.Null(result);
         }
+
+        [Fact]
+        public async Task DisableUserAsync_ReturnsTrue_When_UserRemoved()
+        {
+            var cpf = "14755521068";
+
+            _cognitoServiceMock.Setup(s => s.AdminDeleteUserAsync(It.IsAny<AdminDeleteUserRequest>(), default))
+                .ReturnsAsync(new AdminDeleteUserResponse()
+                {
+                    HttpStatusCode = HttpStatusCode.OK
+                });
+
+            var result = await _cognitoGateway.DisableUserAsync(cpf);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public async Task DisableUserAsync_ReturnsFalse_When_ErrorThrew()
+        {
+            var cpf = "14755521068";
+
+            _cognitoServiceMock.Setup(s => s.AdminDeleteUserAsync(It.IsAny<AdminDeleteUserRequest>(), default))
+                .ReturnsAsync(new AdminDeleteUserResponse()
+                {
+                    HttpStatusCode = HttpStatusCode.BadRequest
+                });
+
+            var result = await _cognitoGateway.DisableUserAsync(cpf);
+
+            Assert.False(result);
+        }
     }
 }

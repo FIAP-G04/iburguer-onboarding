@@ -8,4 +8,6 @@ public interface IIdentityGateway
     Task<bool> SignUpAsync(Customer customer);
 
     Task<SignInResponse?> SignInAsync(CPF cpf);
+
+    Task<bool> DisableUserAsync(CPF cpf);
 }
